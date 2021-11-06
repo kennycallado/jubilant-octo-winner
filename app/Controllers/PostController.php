@@ -10,20 +10,21 @@ use App\Views\PostShow;
 
 class PostController
 {
+  private $repo;
+  function __construct()
+  {
+    $this->repo = new PostRepository(new Database());
+  }
   /* show all the posts */
   function index()
   {
-    $repo = new PostRepository(new DataBase());
-
-    new PostIndex($repo->getAll());
+    new PostIndex($this->repo->getAll());
   }
 
   /* show one post */
   function show($post_id)
   {
-    $repo = new PostRepository(new DataBase());
-
-    new PostShow($repo->getOne($post_id));
+    new PostShow($this->repo->getOne($post_id));
   }
 
   /* show create post */
@@ -36,16 +37,14 @@ class PostController
   /* store a post */
   function store($values)
   {
-    $repo = new PostRepository(new DataBase());
-    $repo->add($values);
+    $this->repo->add($values);
     header("Location: /posts");
   }
 
   /* delete a post */
   function delete($post_id)
   {
-    $repo = new PostRepository(new DataBase());
-    $repo->delete($post_id);
+    $this->repo->delete($post_id);
     header("Location: /posts");
   }
 }
