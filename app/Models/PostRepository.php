@@ -36,9 +36,17 @@ class PostRepository
     return new Post(...$result->fetch(PDO::FETCH_ASSOC));
   }
 
+  /* no sé si debería devolver algo*/
   function add($values)
   {
     $query = "INSERT INTO t_posts (title, content) VALUES(:title, :content)";
-    $result = $this->db->executeSQL($query, $values);
+    $this->db->executeSQL($query, $values);
+  }
+
+  /* no sé si debería devolver algo*/
+  function delete($post_id)
+  {
+    $query = "DELETE FROM t_posts WHERE post_id = $post_id;";
+    $this->db->executeSQL($query);
   }
 }

@@ -28,7 +28,7 @@ class PostController
 
   /* show create post */
   /* quizá me sirve para add y update */
-  function create($values = null)
+  function create()
   {
     new PostCreate();
   }
@@ -38,6 +38,14 @@ class PostController
   {
     $repo = new PostRepository(new DataBase());
     $repo->add($values);
+    header("Location: /posts");
+  }
+
+  /* delete a post */
+  function delete($post_id)
+  {
+    $repo = new PostRepository(new DataBase());
+    $repo->delete($post_id);
     header("Location: /posts");
   }
 }

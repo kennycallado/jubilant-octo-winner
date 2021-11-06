@@ -19,6 +19,10 @@
     "/postcreate": {
       "controller": "PostController",
       "action": "create"
+    },
+    "/postdelete": {
+      "controller": "PostController",
+      "action": "delete"
     }
   },
   "POST": {
