@@ -37,9 +37,14 @@ class DataBase implements IDataBase
     }
   }
 
-  public function executeSQL($sql)
+  public function executeSQL($sql, $values = null)
   {
-    return $this->conn->query($sql);
+    if (!$values) {
+      return $this->conn->query($sql);
+    } else {
+      $statement = $this->conn->prepare($sql);
+      $statement->execute($values);
+    }
   }
   public function __destruct()
   {

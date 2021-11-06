@@ -35,4 +35,10 @@ class PostRepository
 
     return new Post(...$result->fetch(PDO::FETCH_ASSOC));
   }
+
+  function add($values)
+  {
+    $query = "INSERT INTO t_posts (title, content) VALUES(:title, :content)";
+    $result = $this->db->executeSQL($query, $values);
+  }
 }

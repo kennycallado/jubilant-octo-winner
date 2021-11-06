@@ -15,12 +15,16 @@
     "/postdetails": {
       "controller": "PostController",
       "action": "show"
+    },
+    "/postcreate": {
+      "controller": "PostController",
+      "action": "create"
     }
   },
   "POST": {
-    "/": {
-      "controller": "",
-      "action": ""
+    "/postadd": {
+      "controller": "PostController",
+      "action": "store"
     }
   }
 }
