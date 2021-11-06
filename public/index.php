@@ -1,5 +1,10 @@
 <?php
+require_once "../vendor/autoload.php";
 
+use App\Core\Dispatcher;
+use App\Core\Request;
+use App\Core\RouteCollection;
 
-echo "<h1>Hola</h1>";
-echo "<h3>Estamos en construcción</h3>";
+$routes = new RouteCollection();
+$request = new Request();
+$dispatcher = new Dispatcher($routes, $request);

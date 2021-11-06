@@ -1,0 +1,18 @@
+{
+  "GET": {
+    "/": {
+      "controller": "MainController",
+      "action": "index"
+    },
+    "/generator": {
+      "controller": "MainController",
+      "action": "generator"
+    }
+  },
+  "POST": {
+    "/": {
+      "controller": "",
+      "action": ""
+    }
+  }
+}
