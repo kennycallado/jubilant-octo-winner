@@ -14,11 +14,27 @@ class PostRepository
     $this->db = $db;
   }
 
+  function checkLimit($numRows)
+  {
+    /* comprueba límite de posts */
+    /* en caso de superar límite */
+    /* borra todos menos los últimos */
+    $limit = 50;
+    if ($numRows >= $limit) {
+      // $query = "DELETE FROM table LIMIT 10";
+      $query = "DELETE FROM t_posts WHERE ctid IN ( SELECT ctid FROM t_posts ORDER BY post_id LIMIT 40)";
+      $this->db->executeSQL($query);
+    }
+  }
+
   function getAll()
   {
     $response = [];
     $query = "SELECT * FROM t_posts;";
     $result = $this->db->executeSQL($query);
+
+    /* comprueba limites antes de continuar */
+    $this->checkLimit($result->rowCount());
 
     while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
       $post = new Post(...$row);

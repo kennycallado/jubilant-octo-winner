@@ -18,6 +18,10 @@ class PostController
   /* show all the posts */
   function index()
   {
+    /* limitar el número de posts */
+    /* cada vez que se visita el index */
+    /* hacer un check y borrar en caso */
+    /* de que se superen los 50 */
     new PostIndex($this->repo->getAll());
   }
 
