@@ -7,6 +7,14 @@
     "/generator": {
       "controller": "MainController",
       "action": "generator"
+    },
+    "/posts": {
+      "controller": "PostController",
+      "action": "index"
+    },
+    "/postdetails": {
+      "controller": "PostController",
+      "action": "show"
     }
   },
   "POST": {
