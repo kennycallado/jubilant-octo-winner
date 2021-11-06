@@ -1,6 +1,16 @@
 <?php
 
 
+$dbopts = parse_url(getenv('DATABASE_URL'));
+$db_info = array(
+  'driver'   => 'pgsql',
+  'user' => $dbopts["user"],
+  'password' => $dbopts["pass"],
+  'host' => $dbopts["host"],
+  'port' => $dbopts["port"],
+  'dbname' => ltrim($dbopts["path"], '/')
+);
+
 $dsn = "pgsql:host=database;port=5432;dbname=root;user=root;password=root";
 $conn;
 
