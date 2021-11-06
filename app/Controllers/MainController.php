@@ -24,13 +24,16 @@ class MainController
     $db = new DataBase();
 
     /* comprobar si existe la base de datos */
+    $query = "SELECT EXISTS ( SELECT FROM information_schema.tables WHERE  table_name = 't_posts');";
+    $result = $db->executeSQL($query);
 
-    /* valida lo devuelto por la comprobación anterior */
-    if (true) {
+    /* Sino existe genera lo siguiente */
+    if (!$result->fetch(PDO::FETCH_ASSOC)["exists"]) {
       // $sql = "DROP TABLE t_posts;";
       $sql = "CREATE TABLE IF NOT EXISTS t_posts ( post_id serial PRIMARY KEY, title VARCHAR ( 20 ), content TEXT );";
       $db->executeSQL($sql);
 
+      /* Podría usar un faker */
       $sql = "INSERT INTO t_posts (title, content) VALUES ('Título 1', 'Contenido 1'), ('Título 2', 'Contenido 2'), ('Título 3', 'Contenido 3'), ('Título 4', 'Contenido 4');";
       $db->executeSQL($sql);
     }
