@@ -6,6 +6,9 @@ ENV ENVIRONMENT="production"
 # ENV DATABASE_URL="postgresql://root:toor@postgres:5432/root"
 # pero esto lo recibe sin que yo lo pongo en el Dockerfile
 
+
+# heroku DATABASE_URL: 	postgres://lfhylpxczlxsbu:6537391f5c41eb24a2baab9961bc782e2f23ec8afd6927b60b01f93f341023f9@ec2-52-86-223-172.compute-1.amazonaws.com:5432/dugb5ufho9l0i
+
 # RUN docker-php-ext-install mysqli pdo_mysql pdo_pgsql && docker-php-ext-enable mysqli pdo_mysql pdo_pgsql
 
 
