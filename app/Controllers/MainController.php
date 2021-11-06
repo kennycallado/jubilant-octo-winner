@@ -26,7 +26,7 @@ class MainController
     /* comprobar si existe la base de datos */
 
     /* valida lo devuelto por la comprobación anterior */
-    if (false) {
+    if (true) {
       // $sql = "DROP TABLE t_posts;";
       $sql = "CREATE TABLE IF NOT EXISTS t_posts ( post_id serial PRIMARY KEY, title VARCHAR ( 20 ), content TEXT );";
       $db->executeSQL($sql);
