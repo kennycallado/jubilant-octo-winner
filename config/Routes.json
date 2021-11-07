@@ -23,12 +23,20 @@
     "/postdelete": {
       "controller": "PostController",
       "action": "delete"
+    },
+    "/postedit": {
+      "controller": "PostController",
+      "action": "edit"
     }
   },
   "POST": {
     "/postadd": {
       "controller": "PostController",
       "action": "store"
+    },
+    "/postupdate": {
+      "controller": "PostController",
+      "action": "update"
     }
   }
 }

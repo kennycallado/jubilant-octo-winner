@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Update a post</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+
+    <form method="post" action="/postupdate">
+      <input type="hidden" name="post_id" value="<?= $post->post_id ?>">
+
+      <input type="text" name="title" style="width: 18.8rem;" value="<?= $post->title ?>">
+      <label for="title">Título</label>
+      <br>
+      <textarea rows="30" cols="40" name="content"><?= $post->content ?></textarea>
+      <label for="content">Contenido</label>
+      <br>
+      <input type="submit" value="Enviar">
+    </form>
+
+    <h3><a href="/postdetails/<?= $post->post_id ?>">👈</a></h3>
+  
+  </body>
+</html>
+

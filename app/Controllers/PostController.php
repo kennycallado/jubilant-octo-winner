@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Core\DataBase;
 use App\Models\PostRepository;
 use App\Views\PostCreate;
+use App\Views\PostEdit;
 use App\Views\PostIndex;
 use App\Views\PostShow;
 
@@ -43,6 +44,18 @@ class PostController
   {
     $this->repo->add($values);
     header("Location: /posts");
+  }
+
+  function edit($post_id)
+  {
+    $post = $this->repo->getOne($post_id);
+    new PostEdit($post);
+  }
+
+  function update($values)
+  {
+    $this->repo->update($values);
+    header("Location: /postdetails/$values[post_id]");
   }
 
   /* delete a post */

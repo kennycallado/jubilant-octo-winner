@@ -59,6 +59,12 @@ class PostRepository
     $this->db->executeSQL($query, $values);
   }
 
+  function update($values)
+  {
+    $query = "UPDATE t_posts SET title = :title, content = :content WHERE post_id = :post_id";
+    $this->db->executeSQL($query, $values);
+  }
+
   /* no sé si debería devolver algo*/
   function delete($post_id)
   {
