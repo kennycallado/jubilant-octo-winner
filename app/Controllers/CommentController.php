@@ -16,7 +16,9 @@ class CommentController
 
   function store($values)
   {
-    $this->repo->add($values);
+    if ($values["content"] !== "") {
+      $this->repo->add($values);
+    }
     header("Location: /postdetails/$values[post_id]");
   }
 }
