@@ -37,6 +37,10 @@
     "/postupdate": {
       "controller": "PostController",
       "action": "update"
+    },
+    "/commentadd": {
+      "controller": "CommentController",
+      "action": "store"
     }
   }
 }

@@ -3,11 +3,8 @@
 namespace App\Controllers;
 
 use App\Core\DataBase;
-use App\Models\PostRepository;
-use App\Views\PostCreate;
-use App\Views\PostEdit;
-use App\Views\PostIndex;
-use App\Views\PostShow;
+use App\Models\{PostRepository, CommentRepository};
+use App\Views\{PostCreate, PostEdit, PostIndex, PostShow};
 
 class PostController
 {
@@ -29,7 +26,15 @@ class PostController
   /* show one post */
   function show($post_id)
   {
-    new PostShow($this->repo->getOne($post_id));
+    $data = [];
+    $data["post"] = $this->repo->getOne($post_id);
+
+    $commentsRepo = new CommentRepository(new DataBase());
+    $comments = $commentsRepo->getAllByPostId($data["post"]->post_id);
+
+    $data["comments"] = $comments;
+
+    new PostShow($data);
   }
 
   /* show create post */

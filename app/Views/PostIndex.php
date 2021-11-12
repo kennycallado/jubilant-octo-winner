@@ -16,7 +16,7 @@ class PostIndex
     foreach ($this->posts as $post) {
       echo "<tr>";
       echo "<td><a href='/postdetails/$post->post_id'>$post->title</a></td>";
-      echo "<td><a href='/postdelete/$post->post_id'>Eliminar</a></td>";
+      // echo "<td><a href='/postdelete/$post->post_id'>Eliminar</a></td>";
       echo "</tr>";
     }
   }
