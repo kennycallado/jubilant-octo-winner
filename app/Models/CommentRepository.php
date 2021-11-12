@@ -15,7 +15,7 @@ class CommentRepository
     $this->db = $db;
   }
 
-  function checkLimit($numRows)
+  function checkLimit($post_id, $numRows)
   {
     /* comprueba límite de posts */
     /* en caso de superar límite */
@@ -23,7 +23,7 @@ class CommentRepository
     $limit = 10;
     if ($numRows >= $limit) {
       // $query = "DELETE FROM table LIMIT 10";
-      $query = "DELETE FROM t_comments WHERE ctid IN ( SELECT ctid FROM t_comments ORDER BY comment_id LIMIT 8)";
+      $query = "DELETE FROM t_comments WHERE ctid IN ( SELECT ctid FROM t_comments WHERE post_id = $post_id ORDER BY comment_id LIMIT 8)";
       $this->db->executeSQL($query);
     }
   }
@@ -37,7 +37,7 @@ class CommentRepository
 
     $count = $result->rowCount();
     /* comprueba limites antes de continuar */
-    $this->checkLimit($count);
+    $this->checkLimit($post_id, $count);
 
     while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
       $comment = new Comment(...$row);
